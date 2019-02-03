@@ -1,6 +1,7 @@
 {% block javascripts %}
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/push.js/1.0.7/push.min.js"></script>
     <script type="text/javascript">
+        // アクセスから30秒後に通知を受け取る許諾ポップアップを表示
         setTimeout(function () {
             Push.Permission.request(onGranted, onDenied);
         }, 30 * 1000);
