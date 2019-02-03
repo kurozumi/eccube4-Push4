@@ -35,6 +35,7 @@ class Event implements EventSubscriberInterface {
 
     public function onKernelController(FilterControllerEvent $event)
     {
+        // フロントページでない場合はスルー
         if (!$this->requestContext->isFront()) {
             return;
         }
