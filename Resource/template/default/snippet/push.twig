@@ -17,7 +17,7 @@
         if (Push.Permission.has()) {
             Push.create("{{ BaseInfo.shop_name }}", {
                 body:    "{{ News.title }}",
-                icon:    '{{ asset('assets/img/common/favicon.ico') }}',
+                icon:    "{{ asset('assets/img/common/favicon.ico') }}",
                 timeout: 4000,
                 onClick: function () {
                     {% if News.url %}
