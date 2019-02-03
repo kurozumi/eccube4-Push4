@@ -1,0 +1,30 @@
+{% block javascripts %}
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/push.js/1.0.7/push.min.js"></script>
+    <script type="text/javascript">
+        setTimeout(function () {
+            Push.Permission.request(onGranted, onDenied);
+        }, 30 * 1000);
+
+        function onGranted() {
+            console.log('Granted!');
+        }
+
+        function onDenied() {
+            console.log('Denied');
+        }
+
+        if (Push.Permission.has()) {
+            Push.create("{{ BaseInfo.shop_name }}", {
+                body:    "{{ News.title }}",
+                icon:    '{{ asset('assets/img/common/favicon.ico') }}',
+                timeout: 4000,
+                onClick: function () {
+                    {% if News.url %}
+                    location.href = '{{ News.url }}'
+                    {% endif %}
+                    this.close();
+                }
+            });
+        }
+    </script>
+{% endblock %}
