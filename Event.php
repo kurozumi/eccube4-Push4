@@ -12,6 +12,21 @@ use Eccube\Repository\NewsRepository;
 
 class Event implements EventSubscriberInterface {
 
+    /**
+     * @var \Eccube\Request\Context
+     */
+    protected $requestContext;
+
+    /**
+     * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface 
+     */
+    protected $eventDispatcher;
+
+    /**
+     * @var \Eccube\Repository\NewsRepository 
+     */
+    protected $newsRepository;
+
     public function __construct(
             Context $requestContext,
             EventDispatcherInterface $eventDispatcher,
